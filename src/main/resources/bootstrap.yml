@@ -1,9 +1,15 @@
+#server:
+#  port: 8086
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/transactions
 
 # Agregar su credenciales de mongo atlas
 spring:
   data:
     mongodb:
-      database: bank
+      database: BootcampBank
       uri: mongodb+srv://jhianpol:12345@cluster0.hvzkv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 server:
-  port: 8088
+  port: 8086

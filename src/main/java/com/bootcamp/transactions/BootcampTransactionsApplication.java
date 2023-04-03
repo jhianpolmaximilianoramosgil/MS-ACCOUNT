@@ -1,13 +1,13 @@
-package com.nttdata.bank.transaction.account;
+package com.bootcamp.transactions;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BankTransactionAccountServiceApplication {
+public class BootcampTransactionsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BankTransactionAccountServiceApplication.class, args);
+		SpringApplication.run(BootcampTransactionsApplication.class, args);
 	}
 
 }
