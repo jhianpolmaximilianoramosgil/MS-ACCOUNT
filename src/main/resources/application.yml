@@ -1,9 +1,3 @@
-#server:
-#  port: 8086
-#spring:
-#  data:
-#    mongodb:
-#      uri: mongodb://localhost:27017/transactions
 
 # Agregar su credenciales de mongo atlas
 spring:
