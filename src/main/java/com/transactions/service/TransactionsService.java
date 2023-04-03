@@ -1,8 +1,8 @@
-package com.bootcamp.transactions.service;
+package com.transactions.service;
 
-import com.bootcamp.transactions.dto.Message;
-import com.bootcamp.transactions.dto.TransactionRequestDto;
-import com.bootcamp.transactions.entity.Transaction;
+import com.transactions.dto.Message;
+import com.transactions.dto.TransactionRequestDto;
+import com.transactions.model.Transaction;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

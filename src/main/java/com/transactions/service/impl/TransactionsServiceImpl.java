@@ -1,10 +1,10 @@
-package com.bootcamp.transactions.service.impl;
+package com.transactions.service.impl;
 
-import com.bootcamp.transactions.dto.Message;
-import com.bootcamp.transactions.dto.TransactionRequestDto;
-import com.bootcamp.transactions.entity.Transaction;
-import com.bootcamp.transactions.repository.TransactionsRepository;
-import com.bootcamp.transactions.service.TransactionsService;
+import com.transactions.dto.Message;
+import com.transactions.dto.TransactionRequestDto;
+import com.transactions.model.Transaction;
+import com.transactions.repository.TransactionsRepository;
+import com.transactions.service.TransactionsService;
 
 import java.time.LocalDateTime;
 

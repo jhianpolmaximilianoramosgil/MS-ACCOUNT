@@ -1,4 +1,4 @@
-package com.bootcamp.transactions;
+package com.transactions;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

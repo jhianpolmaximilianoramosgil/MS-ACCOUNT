@@ -1,4 +1,4 @@
-package com.bootcamp.transactions.dto;
+package com.transactions.dto;
 
 import java.time.LocalDateTime;
 

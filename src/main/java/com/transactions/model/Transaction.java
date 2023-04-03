@@ -1,4 +1,4 @@
-package com.bootcamp.transactions.entity;
+package com.transactions.model;
 
 import javax.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

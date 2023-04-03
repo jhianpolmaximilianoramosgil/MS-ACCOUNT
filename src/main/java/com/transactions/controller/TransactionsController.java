@@ -1,9 +1,9 @@
-package com.bootcamp.transactions.controller;
+package com.transactions.controller;
 
-import com.bootcamp.transactions.dto.Message;
-import com.bootcamp.transactions.dto.TransactionRequestDto;
-import com.bootcamp.transactions.entity.Transaction;
-import com.bootcamp.transactions.service.TransactionsService;
+import com.transactions.dto.Message;
+import com.transactions.dto.TransactionRequestDto;
+import com.transactions.model.Transaction;
+import com.transactions.service.TransactionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

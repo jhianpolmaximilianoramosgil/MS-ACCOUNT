@@ -1,6 +1,6 @@
-package com.bootcamp.transactions.dto;
+package com.transactions.dto;
 
-import com.bootcamp.transactions.entity.Transaction;
+import com.transactions.model.Transaction;
 import lombok.Getter;
 import lombok.Setter;
 

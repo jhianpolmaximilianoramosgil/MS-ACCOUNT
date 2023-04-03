@@ -1,6 +1,6 @@
-package com.bootcamp.transactions.repository;
+package com.transactions.repository;
 
-import com.bootcamp.transactions.entity.Transaction;
+import com.transactions.model.Transaction;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Flux;
 
