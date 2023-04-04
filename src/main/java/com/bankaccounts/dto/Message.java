@@ -1,11 +1,8 @@
-package com.transactions.dto;
+package com.bankaccounts.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- * Clase de Mensajes
- */
 @Data
 @AllArgsConstructor
 public class Message {

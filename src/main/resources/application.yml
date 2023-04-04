@@ -1,4 +1,5 @@
 
+
 # Agregar su credenciales de mongo atlas
 spring:
   data:
@@ -6,4 +7,4 @@ spring:
       database: BootcampBank
       uri: mongodb+srv://jhianpol:12345@cluster0.hvzkv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 server:
-  port: 8086
+  port: 8085

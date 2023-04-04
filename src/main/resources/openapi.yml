@@ -1,15 +1,15 @@
 openapi: 3.0.1
 info:
-  title: OpenAPI transactions
+  title: OpenAPI account
   version: v0
 servers:
-  - url: http://localhost:8086/
+  - url: http://localhost:8085/
     description: Generated server url
 paths:
-  /transaction:
+  /account:
     get:
       tags:
-        - transactions-controller
+        - account-controller
       operationId: getAll
       responses:
         '200':
@@ -19,16 +19,16 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Transaction'
+                  $ref: '#/components/schemas/Account'
     put:
       tags:
-        - transactions-controller
-      operationId: updateTransaction
+        - account-controller
+      operationId: updateAccount
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionRequestDto'
+              $ref: '#/components/schemas/AccountRequestDto'
         required: true
       responses:
         '200':
@@ -36,16 +36,29 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/Account'
+#  /account/restartTransactions:
+#    put:
+#      tags:
+#        - account-controller
+#      operationId: restartTransactions
+#      responses:
+#        '200':
+#          description: OK
+#          content:
+#            '*/*':
+#              schema:
+#                $ref: '#/components/schemas/Message'
+  /account/withdrawal:
     post:
       tags:
-        - transactions-controller
-      operationId: createTransaction
+        - account-controller
+      operationId: withdrawalAccount
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionRequestDto'
+              $ref: '#/components/schemas/AccountRequestDto'
         required: true
       responses:
         '200':
@@ -53,14 +66,104 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/Transaction'
-  /transaction/{transactionId}:
+                $ref: '#/components/schemas/AccountResponseDto'
+  /account/transfer:
+    post:
+      tags:
+        - account-controller
+      operationId: transferBetweenAccounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TransferResponseDto'
+  /account/transferthird:
+    post:
+      tags:
+        - account-controller
+      operationId: transferThirdParty
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TransferResponseDto'
+  /account/person:
+    post:
+      tags:
+        - account-controller
+      operationId: createAccountPerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountResponseDto'
+  /account/deposit:
+    post:
+      tags:
+        - account-controller
+      operationId: depositAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountResponseDto'
+  /account/company:
+    post:
+      tags:
+        - account-controller
+      operationId: createAccountCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountResponseDto'
+  /account/{accountId}:
     get:
       tags:
-        - transactions-controller
-      operationId: getTransactionById
+        - account-controller
+      operationId: getAccountById
       parameters:
-        - name: transactionId
+        - name: accountId
           in: path
           required: true
           schema:
@@ -71,13 +174,13 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/Transaction'
+                $ref: '#/components/schemas/Account'
     delete:
       tags:
-        - transactions-controller
-      operationId: deleteTransaction
+        - account-controller
+      operationId: deleteAccount
       parameters:
-        - name: transactionId
+        - name: accountId
           in: path
           required: true
           schema:
@@ -89,31 +192,11 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Message'
-  /transaction/product/{productId}:
+  /account/consult/{customerId}:
     get:
       tags:
-        - transactions-controller
-      operationId: getAllXProductId
-      parameters:
-        - name: productId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Transaction'
-  /transaction/customer/{customerId}:
-    get:
-      tags:
-        - transactions-controller
-      operationId: getTransactionByCustomerId
+        - account-controller
+      operationId: getAllAccountXCustomerId
       parameters:
         - name: customerId
           in: path
@@ -128,74 +211,111 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Transaction'
+                  $ref: '#/components/schemas/Account'
 components:
   schemas:
-    TransactionRequestDto:
-      required:
-        - amount
-        - customerId
-        - productId
-        - productType
-        - transactionDate
-        - transactionType
+    AccountRequestDto:
       type: object
       properties:
         id:
           type: string
-        productType:
-          type: string
-        productId:
-          type: string
         customerId:
           type: string
-        transactionType:
+        typeAccount:
+          maximum: 2
+          minimum: 0
+          type: integer
+          format: int32
+        descripTypeAccount:
           type: string
         amount:
           type: number
           format: double
-        transactionDate:
-          type: string
-          format: date-time
-        customerType:
-          type: string
-        balance:
+        maintenance:
           type: number
           format: double
-    Transaction:
+        transaction:
+          type: integer
+          format: int32
+        operationDay:
+          type: integer
+          format: int32
+        dateAccount:
+          type: string
+          format: date-time
+        typeCustomer:
+          type: string
+        numberAccount:
+          type: string
+    Account:
       required:
         - amount
         - customerId
-        - customerType
-        - productId
-        - productType
-        - transactionDate
-        - transactionType
+        - dateAccount
+        - maintenance
+        - operationDay
+        - transaction
       type: object
       properties:
         id:
           type: string
-        productType:
-          type: string
-        productId:
-          type: string
         customerId:
           type: string
-        transactionType:
+        descripTypeAccount:
           type: string
         amount:
           type: number
           format: double
-        transactionDate:
-          type: string
-          format: date-time
-        customerType:
-          type: string
-        balance:
+        startAmount:
           type: number
           format: double
+        maintenance:
+          type: number
+          format: double
+        transaction:
+          type: integer
+          format: int32
+        operationDay:
+          type: integer
+          format: int32
+        dateAccount:
+          type: string
+          format: date-time
+        typeCustomer:
+          type: string
+        commission:
+          type: number
+          format: double
+        numberAccount:
+          type: string
     Message:
       type: object
       properties:
         message:
           type: string
+    AccountResponseDto:
+      type: object
+      properties:
+        message:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+    TransferRequestDto:
+      type: object
+      properties:
+        originAccount:
+          type: string
+        destinationAccount:
+          type: string
+        amount:
+          type: number
+          format: double
+    TransferResponseDto:
+      type: object
+      properties:
+        message:
+          type: string
+        account:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
