@@ -1,13 +1,13 @@
-package com.bankaccounts;
+package com.transactions;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BootcampBankaccountsApplication {
+public class BootcampTransactionsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BootcampBankaccountsApplication.class, args);
+		SpringApplication.run(BootcampTransactionsApplication.class, args);
 	}
 
 }
